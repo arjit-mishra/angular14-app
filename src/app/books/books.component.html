@@ -1,11 +1,8 @@
 
-
 <h2>Programming books list</h2>
 
-<button [disabled]="isDisabled">Button</button>
-
-<ul>
-  <li>
-    <img [src]="src" [alt]="name">
-    {{name}} by {{author}}</li>
+<ul *ngIf="isShowing">
+  <ng-container *ngFor="let singleBook of books; let i = index">
+      <app-book (bookEmitter)="addToCart($event)" [book]="singleBook"></app-book>
+  </ng-container>
 </ul>
