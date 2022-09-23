@@ -1,8 +1,10 @@
 
-<h2>Programming books list</h2>
+<h2 class="text-5xl font-bold justify-center p-5">Programming books list</h2>
 
 <ul *ngIf="isShowing">
   <ng-container *ngFor="let singleBook of books; let i = index">
-      <app-book (bookEmitter)="addToCart($event)" [book]="singleBook"></app-book>
+    <li class="inline-flex">
+      <app-book [book]="singleBook"></app-book>
+    </li>
   </ng-container>
 </ul>

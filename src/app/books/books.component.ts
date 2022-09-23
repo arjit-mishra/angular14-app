@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Book} from "../interfaces/Book";
+import {BookService} from "./book.service";
 
 
 @Component({
@@ -9,33 +10,15 @@ import {Book} from "../interfaces/Book";
 })
 export class BooksComponent implements OnInit {
 
-  books: Book[] = [{
-    name: 'clean code',
-    author: 'Robert D. Martin',
-    src: 'https://images-na.ssl-images-amazon.com/images/I/41xShlnTZTL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg',
-    amount: 800
-  },
-    {
-      name: 'The Pragmatic programmer',
-      author: 'David ThOmas',
-      src: 'https://images-na.ssl-images-amazon.com/images/I/41HXiIojloL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg',
-      amount: 500
-    }];
-
-  cart: Book[] = [];
+  books: Book[] = [];
 
   isShowing: boolean = true;
 
-
-  constructor() {
-    console.log('Books constructor');
+  constructor(private bookService: BookService) {
   }
 
   ngOnInit(): void {
-    console.log('Books onInit');
+    this.books = this.bookService.getBooks();
   }
 
-  addToCart(bookEvent: Book) {
-    this.cart.push(bookEvent);
-  }
 }
