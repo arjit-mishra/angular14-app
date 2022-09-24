@@ -1,11 +1,20 @@
-<nav class="flex justify-between p-4 bg-purple-900 text-white">
-  <div>
-    <a routerLink="">Book Shop</a>
+<div class="navbar bg-secondary-focus font-bold bg-primary text-base-300">
+  <div class="flex-1">
+    <a class="btn btn-ghost normal-case text-xl" routerLink="">Book Shop</a>
   </div>
-  <div>
-    <a routerLink="cart">My Cart</a>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal p-0">
+      <ng-container *ngIf="!isAuthenticate()">
+        <li><a class="text-xl" routerLink="login">Login</a></li>
+        <li><a class="text-xl" routerLink="register">Register</a></li>
+      </ng-container>
+      <ng-container *ngIf="isAuthenticate()">
+        <li><a class="text-xl" routerLink="cart">My Cart</a></li>
+        <li><a class="text-xl" (click)="logOut()">Logout</a></li>
+      </ng-container>
+    </ul>
   </div>
-</nav>
+</div>
 
 <div>
   <router-outlet></router-outlet>
